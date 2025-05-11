@@ -124,11 +124,6 @@ legend {
   left: 4.5rem;
 }
 
-.card_front {
-  margin-top: 8.4rem;
-  left: 1rem;
-}
-
 .card {
   position: relative;
   font-display: flex;
@@ -150,6 +145,34 @@ legend {
 .cvc_data {
   top: 4.5rem;
   left: 13.8rem;
+}
+
+.card_front {
+  margin-top: 8.4rem;
+  left: 1rem;
+}
+
+.card_logo {
+  position: absolute;
+  width: 20%;
+  top: 1rem;
+  left: 1rem;
+}
+
+.card_number {
+  position: absolute;
+  top: 6rem;
+  left: 1.5rem;
+}
+
+.card_name {
+  top: 8rem;
+  left: 1.5rem;
+}
+
+.card_date {
+  top: 8rem;
+  left: 15rem;
 }
 
 /***************/
