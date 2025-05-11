@@ -5,11 +5,12 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <main className="main_container">
-      <img src="/images/mobile-design.jpg" alt="" />
-      <Cards />
-      <Form />
-      <Atributtion />{" "}
+    <main>
+      <div className="main_container">
+        <Cards />
+        <Form />
+      </div>
+      <Atributtion />
     </main>
   );
 }

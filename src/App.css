@@ -21,10 +21,6 @@
   width: 100%;
 }
 
-.form {
-  width: 90%;
-}
-
 .inputs_container {
   display: flex;
   flex-direction: column;
@@ -104,15 +100,22 @@ legend {
 /* CARDS */
 /***************/
 
-.cards_main_container {
+.cards_bg_container {
+  height: 15rem;
+  margin-bottom: 7rem;
   background-image: url("/images/bg-main-mobile.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 15rem;
-  margin-bottom: 5rem;
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cards_main_container {
   position: relative;
+  width: fit-content;
+  width: 375px;
 }
 
 .card_container {
@@ -121,7 +124,7 @@ legend {
 
 .card_back {
   top: 2.8rem;
-  left: 4.5rem;
+  left: 2rem;
 }
 
 .card {
@@ -133,13 +136,26 @@ legend {
 .img_card {
   position: absolute;
   width: 100%;
+  border-radius: 10px;
 }
 
 .card > p {
   position: absolute;
   color: var(--color-white);
-  font-size: 0.7rem;
+}
+
+.card_text_big {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.card_text_small {
+  font-size: 0.6rem;
   letter-spacing: 1px;
+  color: transparent;
+  opacity: 0.7;
 }
 
 .cvc_data {
@@ -175,6 +191,10 @@ legend {
   left: 15rem;
 }
 
+.shadow {
+  box-shadow: 0px 20px 200px 0px gray;
+}
+
 /***************/
 /* ATRIBUTION */
 /***************/
@@ -185,4 +205,16 @@ legend {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 375px) {
+  .card_back {
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main_container {
+    flex-direction: row;
+  }
 }
