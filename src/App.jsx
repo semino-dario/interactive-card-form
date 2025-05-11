@@ -5,13 +5,10 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <main>
-      <div className="main_container">
-        <Cards />
-        <Form />
-      </div>
-      <Atributtion />
-    </main>
+    <div className="main_container">
+      <Cards />
+      <Form />
+    </div>
   );
 }
 

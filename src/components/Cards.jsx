@@ -11,7 +11,7 @@ export default function Cards() {
               src="/images/bg-card-back.png"
               alt="back image of the card"
             />
-            <p className="cvc_data card_text_small">000</p>
+            <p className="cvc_data">000</p>
           </div>
         </div>
         <div className="card_container card_front">
