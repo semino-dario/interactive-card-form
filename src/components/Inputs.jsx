@@ -7,7 +7,7 @@ export default function Inputs() {
       <label htmlFor="name">Cardholder Name</label>
       <input placeholder="e.g. Jane Appleseed" type="text" id="name" />
       <label htmlFor="number">Card Number</label>
-      <input placeholder="e.g. 1234 5678 9123 0000" type="number" />
+      <input placeholder="e.g. 1234 5678 9123 0000" type="text" />
       <div className="inputs_date_cvc_container">
         <fieldset>
           <div className="date_labels_container">
@@ -18,14 +18,14 @@ export default function Inputs() {
           <div className="input_date_container">
             <input
               className="input_date"
-              type="number"
+              type="text"
               placeholder="MM"
               name="month"
               id="month"
             />
             <input
               className="input_date"
-              type="number"
+              type="text"
               placeholder="YY"
               name="year"
               id="year"
@@ -34,7 +34,7 @@ export default function Inputs() {
         </fieldset>
         <div className="input_cvc_container">
           <label htmlFor="cvc">CVC</label> <br />
-          <input type="number" placeholder="e.g. 123" id="cvc" />
+          <input type="text" placeholder="e.g. 123" id="cvc" />
         </div>
       </div>
       <Button />
