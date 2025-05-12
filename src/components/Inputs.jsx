@@ -3,16 +3,22 @@ import "../App.css";
 import Button from "./Button";
 import { FormContext } from "../App";
 
-export default function Inputs() {
-  const [response, setResponse] = useState(false);
+export default function Inputs({ response, onClick }) {
+  const { cardData, setCardData, setError, error } = useContext(FormContext);
 
-  const { cardData, setCardData } = useContext(FormContext);
+  const formatCardNumber = (value) => {
+    const clean = value.replace(/\s+/g, "");
 
-  const sendForm = (e) => {
-    e.preventDefault();
-    setResponse(!response);
-    if (response)
-      setCardData({ name: "", number: "", year: "", month: "", cvc: "" });
+    const limited = clean.slice(0, 16);
+
+    return limited.match(/.{1,4}/g)?.join(" ") || "";
+  };
+
+  const handleChange = (e) => {
+    setError("");
+    const input = e.target.value;
+    const formatted = formatCardNumber(input);
+    setCardData((prev) => ({ ...prev, number: formatted }));
   };
 
   return (
@@ -32,14 +38,14 @@ export default function Inputs() {
           />
           <label htmlFor="number">Card Number</label>
           <input
+            className={`${error && "error_border"}`}
             placeholder="e.g. 1234 5678 9123 0000"
             name="number"
             type="text"
             value={cardData.number}
-            onChange={(e) =>
-              setCardData((prev) => ({ ...prev, number: e.target.value }))
-            }
+            onChange={handleChange}
           />
+          {error && <span className={"error_message"}>{error}</span>}
           <div className="inputs_date_cvc_container">
             <fieldset>
               <div className="date_labels_container">
@@ -96,7 +102,7 @@ export default function Inputs() {
       )}
       <Button
         text={!response ? "confirm" : "continue"}
-        onClick={(e) => sendForm(e)}
+        onClick={(e) => onClick(e)}
       />
     </div>
   );

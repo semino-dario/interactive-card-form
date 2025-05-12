@@ -97,6 +97,17 @@ legend {
   width: 100%;
 }
 
+.error_message {
+  margin-top: -1rem;
+  color: var(--color-red-error);
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.error_border {
+  border-color: var(--color-red-error);
+}
+
 .button_action {
   cursor: pointer;
   color: var(--color-white);
