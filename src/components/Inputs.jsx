@@ -15,7 +15,7 @@ export default function Inputs({ response, onClick }) {
   };
 
   const handleChange = (e) => {
-    setError("");
+    setError({ errorName: "" });
     const input = e.target.value;
     const formatted = formatCardNumber(input);
     setCardData((prev) => ({ ...prev, number: formatted }));
@@ -36,6 +36,9 @@ export default function Inputs({ response, onClick }) {
               setCardData((prev) => ({ ...prev, name: e.target.value }))
             }
           />
+          {error.errorName && (
+            <span className={"error_message"}>{error.errorName}</span>
+          )}
           <label htmlFor="number">Card Number</label>
           <input
             className={`${error && "error_border"}`}
@@ -45,7 +48,9 @@ export default function Inputs({ response, onClick }) {
             value={cardData.number}
             onChange={handleChange}
           />
-          {error && <span className={"error_message"}>{error}</span>}
+          {error.number && (
+            <span className={"error_message"}>{error.errorNumber}</span>
+          )}
           <div className="inputs_date_cvc_container">
             <fieldset>
               <div className="date_labels_container">
