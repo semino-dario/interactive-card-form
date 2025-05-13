@@ -83,6 +83,11 @@ legend {
 .input_date_container {
   display: flex;
   gap: 0.5rem;
+  margin-bottom: -1.2rem;
+}
+
+fieldset {
+  height: 80px;
 }
 
 .input_date {
@@ -93,8 +98,13 @@ legend {
   display: flex;
 }
 
+.input_cvc_container {
+  height: 80px;
+}
+
 .input_cvc_container > input {
   width: 100%;
+  margin-bottom: 0.35rem;
 }
 
 .error_message {
@@ -102,6 +112,7 @@ legend {
   color: var(--color-red-error);
   font-size: 0.8rem;
   margin-bottom: 2rem;
+  height: 0.8rem;
 }
 
 .error_border {

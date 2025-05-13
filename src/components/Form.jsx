@@ -2,14 +2,11 @@ import "../App.css";
 import { useContext, useState } from "react";
 import { FormContext } from "../App";
 import Button from "./Button";
+import { isNumeric, limitInputNumbers } from "../lib/utils";
 
 export default function Form() {
   const { cardData, setCardData, error, setError } = useContext(FormContext);
   const [response, setResponse] = useState(false);
-
-  const isNumeric = (value) => {
-    return /^\d+$/.test(value);
-  };
 
   const checkEmptyInputs = (obj) => {
     let allValid = true;
@@ -56,17 +53,28 @@ export default function Form() {
 
   const formatCardNumber = (value) => {
     const clean = value.replace(/\s+/g, "");
-
-    const limited = clean.slice(0, 16);
-
+    const limited = limitInputNumbers(clean, 16);
     return limited.match(/.{1,4}/g)?.join(" ") || "";
   };
 
   const handleChange = (e) => {
     setError({});
     const input = e.target.value;
-    const formatted = formatCardNumber(input);
-    setCardData((prev) => ({ ...prev, number: formatted }));
+    if (e.target.name === "number") {
+      const formatted = formatCardNumber(input);
+      setCardData((prev) => ({ ...prev, number: formatted }));
+    } else if (e.target.name === "month") {
+      const limited = limitInputNumbers(input, 2);
+      setCardData((prev) => ({ ...prev, month: limited }));
+    } else if (e.target.name === "year") {
+      const limited = limitInputNumbers(input, 2);
+      setCardData((prev) => ({ ...prev, year: limited }));
+    } else if (e.target.name === "cvc") {
+      const limited = limitInputNumbers(input, 3);
+      setCardData((prev) => ({ ...prev, cvc: limited }));
+    } else {
+      setCardData((prev) => ({ ...prev, name: e.target.value })), setError({});
+    }
   };
 
   return (
@@ -82,14 +90,11 @@ export default function Form() {
               name="name"
               id="name"
               value={cardData.name}
-              onChange={(e) => {
-                setCardData((prev) => ({ ...prev, name: e.target.value })),
-                  setError({});
-              }}
+              onChange={(e) => handleChange(e)}
             />
-            {error.name && (
-              <span className={"error_message"}>{error.name}</span>
-            )}
+            <span className={"error_message"}>
+              {error.name ? error.name : ""}
+            </span>
             <label htmlFor="number">Card Number</label>
             <input
               className={`${error.number && "error_border"}`}
@@ -99,9 +104,9 @@ export default function Form() {
               value={cardData.number}
               onChange={handleChange}
             />
-            {error.number && (
-              <span className={"error_message"}>{error.number}</span>
-            )}
+            <span className={"error_message"}>
+              {error.number ? error.number : ""}
+            </span>
             <div className="inputs_date_cvc_container">
               <fieldset>
                 <div className="date_labels_container">
@@ -117,13 +122,7 @@ export default function Form() {
                     name="month"
                     id="month"
                     value={cardData.month}
-                    onChange={(e) => {
-                      setCardData((prev) => ({
-                        ...prev,
-                        month: e.target.value,
-                      })),
-                        setError({});
-                    }}
+                    onChange={(e) => handleChange(e)}
                   />
                   <input
                     className={`${error.year && "error_border"} input_date`}
@@ -132,20 +131,12 @@ export default function Form() {
                     name="year"
                     id="year"
                     value={cardData.year}
-                    onChange={(e) => {
-                      setCardData((prev) => ({
-                        ...prev,
-                        year: e.target.value,
-                      })),
-                        setError({});
-                    }}
+                    onChange={handleChange}
                   />
                 </div>
-                {(error.month || error.year) && (
-                  <span className={"error_message"}>
-                    {error.month ? error.month : error.year}
-                  </span>
-                )}
+                <span className={"error_message"}>
+                  {error.month ? error.month : error.year ? error.year : ""}
+                </span>
               </fieldset>
               <div className="input_cvc_container">
                 <label htmlFor="cvc">CVC</label> <br />
@@ -156,14 +147,11 @@ export default function Form() {
                   name="cvc"
                   id="cvc"
                   value={cardData.cvc}
-                  onChange={(e) => {
-                    setCardData((prev) => ({ ...prev, cvc: e.target.value })),
-                      setError({});
-                  }}
+                  onChange={(e) => handleChange(e)}
                 />
-                {error.cvc && (
-                  <span className={"error_message"}>{error.cvc}</span>
-                )}
+                <span className={"error_message"}>
+                  {error.cvc ? error.cvc : ""}
+                </span>
               </div>
             </div>
           </>
