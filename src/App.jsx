@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import "./App.css";
-import Atributtion from "./components/Atribution";
 import Cards from "./components/Cards";
 import Form from "./components/Form";
 
@@ -18,10 +17,10 @@ function App() {
 
   return (
     <FormContext.Provider value={{ cardData, setCardData, error, setError }}>
-      <div className="main_container">
+      <main className="main_container">
         <Cards />
         <Form />
-      </div>
+      </main>
     </FormContext.Provider>
   );
 }

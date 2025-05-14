@@ -15,6 +15,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-bottom: 1rem;
 }
 
 .inputs_container {
@@ -28,7 +29,6 @@
 }
 
 input {
-  margin-bottom: 1.5rem;
   margin-top: 0.5rem;
   height: 2.5rem;
   border-radius: 8px;
@@ -71,6 +71,7 @@ legend {
   letter-spacing: 1px;
   font-size: 0.75rem;
   font-weight: 600;
+  margin-top: -1.5rem;
 }
 
 .inputs_date_cvc_container {
@@ -83,7 +84,7 @@ legend {
 .input_date_container {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: -1.2rem;
+  margin-bottom: 0.3rem;
 }
 
 fieldset {
@@ -100,6 +101,8 @@ fieldset {
 
 .input_cvc_container {
   height: 80px;
+  margin-bottom: 0.5rem;
+  margin-top: -1.4rem;
 }
 
 .input_cvc_container > input {
@@ -108,7 +111,7 @@ fieldset {
 }
 
 .error_message {
-  margin-top: -1rem;
+  margin-top: 0.5rem;
   color: var(--color-red-error);
   font-size: 0.8rem;
   margin-bottom: 2rem;
@@ -118,6 +121,10 @@ fieldset {
 .error_border {
   border-color: var(--color-red-error);
 }
+
+/***************/
+/* BUTTON */
+/***************/
 
 .button_action {
   cursor: pointer;
@@ -131,7 +138,7 @@ fieldset {
   font-weight: 400;
   letter-spacing: 1px;
   color: var(--color-light-grayish-violet);
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 /***************/
@@ -165,7 +172,7 @@ fieldset {
 
 .cards_bg_container {
   height: 15rem;
-  margin-bottom: 7rem;
+  margin-bottom: 6rem;
   background-image: url("/images/bg-main-mobile.png");
   background-size: cover;
   background-position: center;
@@ -178,6 +185,7 @@ fieldset {
 .cards_main_container {
   position: relative;
   width: 375px;
+  margin-top: -0.5rem;
 }
 
 .card_container {
@@ -222,8 +230,8 @@ fieldset {
 
 .cvc_data {
   letter-spacing: 1.3px;
-  margin-top: 25%;
-  margin-left: 80%;
+  margin-top: 24%;
+  margin-left: 77%;
   letter-spacing: 1.5px;
   color: white;
 }
@@ -254,23 +262,11 @@ fieldset {
 
 .card_date {
   margin-top: 47%;
-  margin-left: 85%;
+  margin-left: 80%;
 }
 
 .shadow {
   box-shadow: 0px 20px 200px 0px gray;
-}
-
-/***************/
-/* ATRIBUTION */
-/***************/
-
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
 }
 
 @media (min-width: 375px) {
@@ -317,5 +313,15 @@ fieldset {
   .card_text_big {
     font-size: 1.6rem;
     letter-spacing: 3px;
+  }
+
+  .cvc_data {
+    margin-top: 25%;
+    margin-left: 80%;
+  }
+
+  .card_date {
+    margin-top: 47%;
+    margin-left: 85%;
   }
 }

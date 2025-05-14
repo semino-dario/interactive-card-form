@@ -6,7 +6,7 @@ export default function Cards() {
   const { cardData } = useContext(FormContext);
 
   return (
-    <div className="cards_bg_container">
+    <section className="cards_bg_container">
       <div className="cards_main_container">
         <div className="card_container card_back">
           <div className="card">
@@ -39,12 +39,12 @@ export default function Cards() {
               {cardData.name === "" ? "JANE APPLESEED" : cardData.name}
             </p>
             <p className="card_date card_text_small">
-              {cardData.month === "" ? "00" : cardData.month}/{" "}
+              {cardData.month === "" ? "00" : cardData.month}/
               {cardData.year === "" ? "00" : cardData.year}
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
