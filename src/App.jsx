@@ -13,10 +13,9 @@ function App() {
     month: "",
     cvc: "",
   });
-  const [error, setError] = useState({});
 
   return (
-    <FormContext.Provider value={{ cardData, setCardData, error, setError }}>
+    <FormContext.Provider value={{ cardData, setCardData }}>
       <main className="main_container">
         <Cards />
         <Form />
